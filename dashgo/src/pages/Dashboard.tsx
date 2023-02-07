@@ -2,13 +2,15 @@ import { Sidebar } from "@/components/Sidebar";
 import { Header } from "@/components/Header";
 import { Box, Flex, SimpleGrid, Text, theme } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
+import { ApexOptions } from "apexcharts"
 
 
 const Chart = dynamic(() => import("react-apexcharts"), {
   ssr: false, //server side rendering desligado
 })
 
-const options = {
+// tipar essa const
+const options: ApexOptions = {
   chart: {
     toolbar: {
       show: false, //remove o menu
@@ -29,7 +31,7 @@ const options = {
   },
   xaxis: {
     type: "datetime",
-    axixBorder: {
+    axisBorder: {
       color: theme.colors.gray[600]
     },
     axisTicks: {
@@ -74,20 +76,23 @@ export default function Dashboard() {
         <Sidebar />
 
         <SimpleGrid flex="1" gap="4" minChildWidth="320px" alignItems="flex-start">
-          <Box p="8" bg="gray.800" borderRadius={8} pb="4">
+          <Box p={["6", "8"]} bg="gray.800" borderRadius={8} pb="4">
             <Text fontSize="lg" mb="4">Inscritos da Semana</Text>
             <Chart 
+              width="100%"
               type="area" //tipo do gráfico
               height={160}
               options={options} //configuraçcões do grafico
               series={series} //dados do gráfico
             />
           </Box>
-          <Box p="8" bg="gray.800" borderRadius={8} pb="4">
+          <Box p={["6", "8"]} bg="gray.800" borderRadius={8} pb="4">
             <Text fontSize="lg" mb="4" >Taxa de Abertura</Text>
             <Chart 
+              width="100%"
               type="area" //tipo do gráfico
               height={160}
+              // precisa tipar a constante options para que todas as configuracoes sejam reconhecidas
               options={options} //configuraçcões do grafico
               series={series} //dados do gráfico
             />
