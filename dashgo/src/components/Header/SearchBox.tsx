@@ -7,7 +7,7 @@ export function SearchBox() {
   //guarda uma referencia do meu input na DOM, preciso referenciar qual  tipo de elemento atraves do generic
   const searchInputRef = useRef<HTMLInputElement>(null);
   //assim eu consigo obter o valor dessa referencia
-  console.log(searchInputRef.current?.value)
+  //console.log(searchInputRef.current?.value)
 
 
   return (
